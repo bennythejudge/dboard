@@ -7,7 +7,7 @@
         <h4 class="modal-title" id="myModalLabel">Disclaimer</h4>
       </div>
       	<div class="modal-body">
-This application has been developed as an educational experiment to learn PHP.
+This application has been developed as an educational experiment.
 The information is provided "as is".<p/>
 We TAKE NO RESPONSIBILITY for its accuracy.
 The information is obtained, with permission, from TFL live tube data.

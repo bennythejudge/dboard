@@ -1,7 +1,10 @@
 <?php include_once('header.php'); ?>
 
 <div class="container" style = "background: none repeat scroll 0% 0% white; width: 100%;">
-	<p><b>Line selected: <?php  echo $_SESSION['selected_line'] . " " . $lines[$_SESSION['selected_line']];?></b></p>
+
+<div class="alert alert-info">
+	<strong><?php  echo $lines[$_SESSION['selected_line']];?> Line</strong>
+</div>
 	<!-- :VARIABLE WAS SET IN index.php 'line' : WILL USE IN included file  -->
 	<div  class = "col-xs-4">
 		<form class="form-horizontal" role="form">

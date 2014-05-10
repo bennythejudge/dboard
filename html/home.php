@@ -1,7 +1,8 @@
 <?php include_once('header.php'); ?>
 <div class="container" style = "background: none repeat scroll 0% 0% white; width: 100%;">
-	<div  class = "col-xs-4">
-		<p><b>Select Line</label></b></p>
+	<div  class = "col-md-3">
+		<p/>
+		<br/>
 		<form class="form-horizontal" role="form" name = "line_frm">
 			<div class="form-group" >
 				<input type = "hidden" name = "action" value = "stations">
@@ -26,7 +27,7 @@
 var first_time_visit = $.cookie("first_time_visit");
 if(first_time_visit != 1){//first time visit
 	$('#disclaimerModal').modal()
-//	$.cookie("first_time_visit", 1, { expires : 3 });
-	$.cookie("first_time_visit", 1);
+	$.cookie("first_time_visit", 1, { expires : 3 });
+//	$.cookie("first_time_visit", 1);
 }
 </script>

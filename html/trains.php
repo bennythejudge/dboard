@@ -32,6 +32,8 @@ function get_trains($l,$s) {
 // access tfl and get the board
 // line: $_SESSION['selected_line']
 // station: $_SESSION['selected_station']
+//  s="<div class" . '"' . "alert alert-info" . '">';
+
 	print "<p>Line: " . $lines[$_SESSION['selected_line']] . "</p>";
 	$station_code=$_SESSION['selected_station'];
 	$station_name=$_SESSION[$station_code];
