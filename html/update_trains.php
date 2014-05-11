@@ -37,7 +37,8 @@ $trains = get_trains($_SESSION['selected_line'],$_SESSION['selected_station']);
 	foreach ($trains as $ele) {
 		if ($ele['tag'] == 'WHENCREATED') { 
 			$last_update=$ele['value'];
-			print '<div id="last_updated">Last updated: ' . $last_update . '</div>' . "\n";
+			print '<div class="alert alert-info">' . "Last updated: " . $last_update . " (Page Refreshes Automatically)</div>";
+//			print '<div class="alert alert-info">Last updated: ' . $last_update . '</div>' . "\n";
 		} elseif ( $ele['tag'] == 'S') {
 			# do nothing
 		} elseif ( $ele['tag'] == 'P') {
@@ -52,47 +53,66 @@ $trains = get_trains($_SESSION['selected_line'],$_SESSION['selected_station']);
 							# do nothing
 						}
 					}
-					print '<div id="platform">' . $t . "</div>\n";	
+					print '<div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title">Platform</h3></div><div class="panel-body">';
+					print "$t";
+					print "</div></div>";
+					//print '<div id="platform">' . $t . "</div>\n";	
 				}
 			}
 			# repeated again and again
 		} elseif ( $ele['tag'] == 'T') {
-			foreach($ele as $key=>$value) {
-				if ($key == "attributes") {
-					foreach ($value as $k => $v) {
-						// if line is the same as the selected line, ignore
-						if ( $k == 'LN') {
-							// if ( $lines[$_SESSION['selected_line']] != $lines[$v]) {
-								$nowline="H";
-						 	if ( "H" != $lines[$v]) {
-								$screen_line[0] = "<li>" . 'Line: ' . $lines[$v] . "</li>";								
+						foreach($ele as $key=>$value) {
+							if ($key == "attributes") {
+								foreach ($value as $k => $v) {
+									// if line is the same as the selected line, ignore
+									if ( $k == 'LN') {
+										#print "<p>" . $lines[$_SESSION['selected_line']] . "</p>";	
+										#print "<p>" . $lines[$v] . "</p>";
+										if ( $lines[$_SESSION['selected_line']] != $lines[$v]) {
+			//								$screen_line[0] = "<li>" . 'Line: ' . $lines[$v] . "</li>";								
+											$screen_line[0] = "<p>" . 'Line: ' . $lines[$v] . "</p>";								
+
+										} else {
+											$screen_line[0] = '';	
+										}
+									} elseif ($k == 'DESTINATION') {
+			//							$screen_line[1] = "<li>" . 'Dest: ' . $v . "</li>";
+										$screen_line[1] = "<p>" . 'Dest: ' . $v . "</p>";
+									} elseif ($k == 'TIMETO') {
+			//							$screen_line[2] = "<li>" . 'Time: ' . $v . "</li>";
+										if ( $v == '-') {
+											// nothing - train at platform, don't print anything
+										}
+										else {
+											$screen_line[2] = "<p>" . 'Next train in  ' . $v . "m</p>";								
+										}
+									} elseif ($k == 'LOCATION' ) {
+			//							$screen_line[3] = "<li>" . 'Loc.: ' . $v . "</li>";
+										$screen_line[3] = "<p>" . 'Loc.: ' . $v . "</p>";
+									} elseif ($k == 'ISSTALLED' && $v != 0) {
+			//							$screen_line[3] = "<li>" . 'Stalled' . "</li>";
+										$screen_line[3] = "<p>" . 'Stalled' . "</p>";
+									}
+								}
 							} else {
-								$screen_line[0] = '';	
+			#					if ( $key != 'tag' && $key != 'type' && $key != 'level') {
+			#						$screen_line[] = "<li>" . $key . " : " . $value . "</li>";											
+			#					}
 							}
-						} elseif ($k == 'DESTINATION') {
-							$screen_line[1] = "<li>" . 'Dest: ' . $v . "</li>";
-						} elseif ($k == 'TIMETO') {
-							$screen_line[2] = "<li>" . 'Time: ' . $v . "</li>";
-						} elseif ($k == 'LOCATION' ) {
-							$screen_line[3] = "<li>" . 'Loc.: ' . $v . "</li>";
-						} elseif ($k == 'ISSTALLED' && $v != 0) {
-							$screen_line[3] = "<li>" . 'Stalled' . "</li>";
+							print "<p/><p/>";
 						}
+			//			print ""
+			//			print '<div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title">Platform</h3></div><div class="panel-body">';
+						print '<div id="train">' . "\n"; 
+						for ($i=0; $i<=3; $i++) {
+							print $screen_line[$i];	
+						}
+			//			print "</div></div>";
+						print "<hr/>";
+						print "</div>\n";
+						$screen_line=array();
 					}
-				} else {
-					# do nothing
-				}
-			}
-			print '<div id="train">' . "\n";
-			print "<ul>";
-			for ($i=0; $i<=3; $i++) {
-				print $screen_line[$i];	
-			}
-			print "</ul>";
-			print "</div>\n";
-			$screen_line=array();
-		}
-		$screen_line=array();
+					$screen_line=array();
 	}
 //	echo "</body>\n</html>\n";
 ?>

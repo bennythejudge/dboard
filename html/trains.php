@@ -56,7 +56,7 @@ print '<div id="section01">' . "\n";
 		#print_r($ele);
 		if ($ele['tag'] == 'WHENCREATED') { 	
 			$last_update=$ele['value'];
-			print '<div class="alert alert-info">' . "Last updated: " . $last_update . "</div>";
+			print '<div class="alert alert-info">' . "Last updated: " . $last_update . " (Page Refreshes Automatically)</div>";
 		} elseif ( $ele['tag'] == 'S') {
 #			print "<p>" . print_r($ele) . "</p>";
 #			$name = $ele['N'];
@@ -105,18 +105,29 @@ print '<div id="section01">' . "\n";
 							#print "<p>" . $lines[$_SESSION['selected_line']] . "</p>";	
 							#print "<p>" . $lines[$v] . "</p>";
 							if ( $lines[$_SESSION['selected_line']] != $lines[$v]) {
-								$screen_line[0] = "<li>" . 'Line: ' . $lines[$v] . "</li>";								
+//								$screen_line[0] = "<li>" . 'Line: ' . $lines[$v] . "</li>";								
+								$screen_line[0] = "<p>" . 'Line: ' . $lines[$v] . "</p>";								
+
 							} else {
 								$screen_line[0] = '';	
 							}
 						} elseif ($k == 'DESTINATION') {
-							$screen_line[1] = "<li>" . 'Dest: ' . $v . "</li>";
+//							$screen_line[1] = "<li>" . 'Dest: ' . $v . "</li>";
+							$screen_line[1] = "<p>" . 'Dest: ' . $v . "</p>";
 						} elseif ($k == 'TIMETO') {
-							$screen_line[2] = "<li>" . 'Time: ' . $v . "</li>";
+//							$screen_line[2] = "<li>" . 'Time: ' . $v . "</li>";
+							if ( $v == '-') {
+								// nothing - train at platform, don't print anything
+							}
+							else {
+								$screen_line[2] = "<p>" . 'Next train in  ' . $v . "m</p>";								
+							}
 						} elseif ($k == 'LOCATION' ) {
-							$screen_line[3] = "<li>" . 'Loc.: ' . $v . "</li>";
+//							$screen_line[3] = "<li>" . 'Loc.: ' . $v . "</li>";
+							$screen_line[3] = "<p>" . 'Loc.: ' . $v . "</p>";
 						} elseif ($k == 'ISSTALLED' && $v != 0) {
-							$screen_line[3] = "<li>" . 'Stalled' . "</li>";
+//							$screen_line[3] = "<li>" . 'Stalled' . "</li>";
+							$screen_line[3] = "<p>" . 'Stalled' . "</p>";
 						}
 					}
 				} else {
@@ -124,13 +135,16 @@ print '<div id="section01">' . "\n";
 #						$screen_line[] = "<li>" . $key . " : " . $value . "</li>";											
 #					}
 				}
+				print "<p/><p/>";
 			}
+//			print ""
+//			print '<div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title">Platform</h3></div><div class="panel-body">';
 			print '<div id="train">' . "\n"; 
-			print "<ul>";
 			for ($i=0; $i<=3; $i++) {
 				print $screen_line[$i];	
 			}
-			print "</ul>\n";
+//			print "</div></div>";
+			print "<hr/>";
 			print "</div>\n";
 			$screen_line=array();
 		}

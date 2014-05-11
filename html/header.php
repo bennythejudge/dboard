@@ -47,7 +47,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		  </button>
-		  <a class="navbar-brand" href="#">TFL Departures</a>
+		  <a class="navbar-brand" href="#">TFL Departure Board (beta)</a>
 		</div>
 		<div class="collapse navbar-collapse">
 		  <ul class="nav navbar-nav">
@@ -61,7 +61,7 @@
 
 	<!-- trying to put some space between the navbar and the page content -->
 	<div class="container">
-		<p style="padding-top:2cm;"/>
+		<p style="padding-top:1.5cm;"/>
 		</p>
 	</div>
 
