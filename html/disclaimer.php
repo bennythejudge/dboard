@@ -7,9 +7,12 @@
         <h4 class="modal-title" id="myModalLabel">Disclaimer</h4>
       </div>
       	<div class="modal-body">
+May 2014
 This application has been developed as an educational experiment.
-The information is provided "as is".<p/>
-We TAKE NO RESPONSIBILITY for its accuracy.
+We TAKE NO RESPONSIBILITY for the accuracy of the information provided.
+Please note that at this stage this application does NOT provide information
+on the status of services (as weekend work or other disruptions).
+Trains might be showing as arriving even if the line is actually closed.
 The information is obtained, with permission, from TFL live data.
 Use at your own risk.
 				</div>
