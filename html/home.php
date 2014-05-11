@@ -1,25 +1,22 @@
 <?php include_once('header.php'); ?>
-<div class="container" style = "background: none repeat scroll 0% 0% white; width: 100%;">
-	<div  class = "col-md-3">
-		<p/>
-		<br/>
-		<form class="form-horizontal" role="form" name = "line_frm">
-			<div class="form-group" >
-				<input type = "hidden" name = "action" value = "stations">
-				<select class="form-control" name="line" onchange = "document.line_frm.submit();">
-				  <option value="">Select Line</option>
-					<?php
-					foreach ( $lines as $key => $value) {
-						echo '<option value="' . $key . '">' . $value . '</option>';
-					}
-					?>
-				</select>
-			</div>
+<div class="container">
+	<p/><p/>
+		<form role="form" name = "line_frm">
+		  <div class="form-group">
+		  </div>
+		  <div class="form-group">
+			<input type = "hidden" name = "action" value = "stations">
+			<select class="form-control" name="line" onchange = "document.line_frm.submit();">
+			  <option value="">Select Line</option>
+				<?php
+				foreach ( $lines as $key => $value) {
+					echo '<option value="' . $key . '">' . $value . '</option>';
+				}
+				?>
+			</select>
 		</form>
-		  <!-- <button type="button" class="btn btn-primary btn-lg">Next >></button> -->
-	</div>
-</div><!-- containter -->
-
+</div>
+<!-- containter -->
 <?php include_once('footer.php'); ?>
 <?php include_once('disclaimer.php'); ?>
 <!-- first time send a disclaimer -->
@@ -31,3 +28,4 @@ if(first_time_visit != 1){//first time visit
 //	$.cookie("first_time_visit", 1);
 }
 </script>
+

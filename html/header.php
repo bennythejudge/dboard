@@ -1,27 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 		
     <title>TFL Trains Departure Board (beta)</title>
-  <!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery-cookie/jquery.cookie.js"></script>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
-
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-  
-	<!-- Custom styles for this template -->
-	<link rel="stylesheet" type="text/css" href="css/navbar-fixed-top.css" >
 
-    <!-- Just for debugging purposes. Don't actually copy this line! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+	<script>
+	    $(document).ready(function(){
+	        setInterval(function() {
+	            $("#section01").load("html/update_trains.php");
+	        }, 35000);
+	    });
+	</script>
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- add padding to the body to avoid overlaying with navbar -->
+	body { padding-top: 100px; }
+
+   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -49,3 +58,11 @@
 		</div><!--/.nav-collapse -->
 	  </div>
 	</div>
+
+	<!-- trying to put some space between the navbar and the page content -->
+	<div class="container">
+		<p style="padding-top:2cm;"/>
+		</p>
+	</div>
+
+

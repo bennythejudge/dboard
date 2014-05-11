@@ -10,7 +10,7 @@
 This application has been developed as an educational experiment.
 The information is provided "as is".<p/>
 We TAKE NO RESPONSIBILITY for its accuracy.
-The information is obtained, with permission, from TFL live tube data.
+The information is obtained, with permission, from TFL live data.
 Use at your own risk.
 				</div>
       <div class="modal-footer">

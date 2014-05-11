@@ -1,7 +1,7 @@
 <?php 
 //include_once('header_refresh.php'); 
-//include_once('header.php'); 
-include_once('header_jquery.php'); 
+include_once('header.php'); 
+//include_once('header_jquery.php'); 
 
 // returns a hash containing:
 // 'platform code' => ( platform name, (trains)),
@@ -28,16 +28,22 @@ function get_trains($l,$s) {
 
 <div class="container" style = "background: none repeat scroll 0% 0% white; width: 100%;">
 
+	<div class="alert alert-info">
+		<strong><?php  echo $lines[$_SESSION['selected_line']];?> Line</strong><p/>
+		<strong><?php $station_code=$_SESSION['selected_station']; $station_name=$_SESSION[$station_code]; echo $station_name; ?> Station</strong>
+	</div>
+
+
 <?php
 // access tfl and get the board
 // line: $_SESSION['selected_line']
 // station: $_SESSION['selected_station']
 //  s="<div class" . '"' . "alert alert-info" . '">';
 
-	print "<p>Line: " . $lines[$_SESSION['selected_line']] . "</p>";
-	$station_code=$_SESSION['selected_station'];
-	$station_name=$_SESSION[$station_code];
-	print "<p>Station: " . $station_name . "</p>";
+//	print "<p>Line: " . $lines[$_SESSION['selected_line']] . "</p>";
+//	$station_code=$_SESSION['selected_station'];
+//	$station_name=$_SESSION[$station_code];
+//	print "<p>Station: " . $station_name . "</p>";
 	#print "<p>Calling get_trains</p>";
 	$trains = get_trains($_SESSION['selected_line'],$_SESSION['selected_station']);
 	#print "<pre>" . print_r($trains) . "</pre>";
@@ -48,9 +54,9 @@ print '<div id="section01">' . "\n";
 	foreach ($trains as $ele) {
 #		echo "<pre>";
 		#print_r($ele);
-		if ($ele['tag'] == 'WHENCREATED') { 
+		if ($ele['tag'] == 'WHENCREATED') { 	
 			$last_update=$ele['value'];
-			print '<div id="last_updated">' . "Last updated: " . $last_update . "</div>";
+			print '<div class="alert alert-info">' . "Last updated: " . $last_update . "</div>";
 		} elseif ( $ele['tag'] == 'S') {
 #			print "<p>" . print_r($ele) . "</p>";
 #			$name = $ele['N'];
@@ -76,8 +82,12 @@ print '<div id="section01">' . "\n";
 #							$t = $t . "TrackCode: " . $v . " ";
 						}
 					}
+					// platform
 #					print "<pre>" . $t . "</pre>";	
-					print '<div id="platform">' . $t . '</div>';
+					print '<div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title">Platform</h3></div><div class="panel-body">';
+					print "$t";
+					print "</div></div>";
+					//print '<div class="alert alert-info">' . $t . '</div>';
 				}
 			}
 			# repeated again and again
