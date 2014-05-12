@@ -7,7 +7,7 @@
         <h4 class="modal-title" id="myModalLabel">Disclaimer</h4>
       </div>
       	<div class="modal-body">
-May 2014
+May 2014	
 This application has been developed as an educational experiment.
 We TAKE NO RESPONSIBILITY for the accuracy of the information provided.
 Please note that at this stage this application does NOT provide information
